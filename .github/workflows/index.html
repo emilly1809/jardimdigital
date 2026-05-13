@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>O Jardim Digital da Democracia Feminina</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    :root {
+      --verde-escuro: #1b3d17;
+      --ouro: #c5a059;
+      --vinho: #630d0d;
+      --bege: #fdfaf3;
+      --cinza: #f2f2f2;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bege);
+      color: #222;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.8;
+    }
+
+    /* HERO */
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+
+      background:
+        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+        url('https://images.unsplash.com/photo-1490750967868-88aa4486c946?q=80&w=1600&auto=format&fit=crop');
+
+      background-size: cover;
+      background-position: center;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      text-align: center;
+      padding: 20px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+    }
+
+    .hero h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.2rem, 5vw, 5rem);
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      color: white;
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+
+    .btn-explorar {
+      background: var(--ouro);
+      color: white;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn-explorar:hover {
+      background: var(--vinho);
+    }
+
+    /* TEXTO */
+
+    .secao-texto {
+      max-width: 1000px;
+      margin: 70px auto;
+      background: white;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .secao-texto h2 {
+      color: var(--vinho);
+      margin-bottom: 20px;
+    }
+
+    .vivencia-epoca {
+      background: var(--cinza);
+      border-left: 6px solid var(--vinho);
+      padding: 25px;
+      margin: 30px 0;
+      font-style: italic;
+    }
+
+    /* FILTROS */
+
+    .filtros-section {
+      max-width: 1000px;
+      margin: 0 auto 50px;
+
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .filtros-section input,
+    .filtros-section select {
+      padding: 14px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      min-width: 250px;
+      font-size: 1rem;
+    }
+
+    /* TIMELINE */
+
+    .linha-tempo {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .linha-tempo h2 {
+      color: var(--vinho);
+      margin-bottom: 40px;
+    }
+
+    .timeline-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+    }
+
+    .timeline-item {
+      background: white;
+      padding: 25px;
+      border-radius: 14px;
+      width: 220px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    }
+
+    .timeline-item span {
+      color: var(--ouro);
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+
+    /* JARDIM */
+
+    .jardim-section {
+      padding: 50px 20px;
+    }
+
+    .jardim-section h2 {
+      text-align: center;
+      color: var(--vinho);
+      margin-bottom: 50px;
+    }
+
+    .jardim-display {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 70px;
+
+      max-width: 1300px;
+      margin: auto;
+    }
+
+    .flor-box {
+      background: none;
+      border: none;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      cursor: pointer;
+
+      transition: 0.4s;
+    }
+
+    .flor-box:hover {
+      transform: translateY(-12px) scale(1.03);
+    }
+
+    .flor-box:focus {
+      outline: 3px solid var(--ouro);
+      border-radius: 12px;
+    }
+
+    .flor {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      position: relative;
+
+      animation: nascer 0.8s ease;
+    }
+
+    .petala {
+      position: absolute;
+
+      width: 50px;
+      height: 75px;
+
+      background: inherit;
+
+      border-radius: 50% 50% 20% 20%;
+
+      top: -40px;
+      left: 5px;
+
+      transform-origin: bottom center;
+
+      opacity: 0.9;
+    }
+
+    .caule {
+      width: 10px;
+      height: 100px;
+
+      background: linear-gradient(#4caf50, #1b3d17);
+
+      margin-top: -5px;
+    }
+
+    .nome-flor {
+      margin-top: 15px;
+      text-align: center;
+      font-weight: 700;
+      color: var(--verde-escuro);
+    }
+
+    /* MODAL */
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+
+      background: rgba(0,0,0,0.75);
+
+      display: none;
+      z-index: 999;
+    }
+
+    #modal {
+      position: fixed;
+
+      top: 50%;
+      left: 50%;
+
+      transform: translate(-50%, -50%);
+
+      width: 90%;
+      max-width: 850px;
+      max-height: 85vh;
+
+      overflow-y: auto;
+
+      background: white;
+
+      border-radius: 20px;
+
+      padding: 30px;
+
+      z-index: 1000;
+
+      display: none;
+
+      animation: modalEntrada 0.4s ease;
+    }
+
+    #modal h2 {
+      color: var(--vinho);
+      margin-bottom: 15px;
+    }
+
+    .modal-datas {
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    .modal-box {
+      margin-bottom: 25px;
+    }
+
+    .modal-box h3 {
+      color: var(--verde-escuro);
+      margin-bottom: 10px;
+    }
+
+    .destaque {
+      background: #fdf5e6;
+      padding: 20px;
+      border-left: 7px solid var(--ouro);
+      border-radius: 10px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+
+      border: none;
+      background: none;
+
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* ANIMAÇÕES */
+
+    @keyframes modalEntrada {
+      from {
+        opacity: 0;
+        transform: translate(-50%, -45%);
+      }
+
+      to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    @keyframes nascer {
+      from {
+        transform: scale(0);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    /* RESPONSIVO */
+
+    @media (max-width: 768px) {
+
+      .secao-texto {
+        padding: 25px;
+      }
+
+      #modal {
+        padding: 20px;
+      }
+
+      .timeline-item {
+        width: 100%;
+        max-width: 320px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <header class="hero">
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <h1>O Jardim Digital da Democracia Feminina</h1>
+
+      <p>
+        A Trajetória Política das Mulheres no Ceará:
+        Da Invisibilidade ao Poder
+      </p>
+
+      <a href="#jardim" class="btn-explorar">
+        Explorar Jardim
+      </a>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="secao-texto">
+      <h2>A Vivência do Silenciamento: O “Não-Lugar” Político</h2>
+
+      <p>
+        Para entender as mulheres deste jardim, é preciso compreender o deserto onde elas plantaram.
+        No século XIX e início do século XX, mulheres eram afastadas da vida pública e política,
+        vivendo uma espécie de invisibilidade social e civil.
+      </p>
+
+      <div class="vivencia-epoca">
+        “Imagine o Ceará de 1900: reuniões políticas aconteciam em clubes onde mulheres não entravam.
+        A voz feminina era limitada ao ambiente doméstico. Quando uma mulher ousava discutir política,
+        era vista como inadequada para a sociedade da época.”
+      </div>
+
+      <p>
+        Mesmo após o direito ao voto em 1932, a participação feminina na política continuou marcada
+        por preconceitos, silenciamento e desigualdade de oportunidades.
+      </p>
+    </section>
+
+    <section class="filtros-section">
+
+      <input
+        type="text"
+        id="pesquisa"
+        placeholder="Pesquisar mulher..."
+      />
+
+      <select id="filtro-categoria">
+        <option value="todas">Todas as Categorias</option>
+        <option value="politica">Política</option>
+        <option value="educacao">Educação</option>
+        <option value="ativismo">Ativismo</option>
+        <option value="literatura">Literatura</option>
+        <option value="indigena">Povos Indígenas</option>
+      </select>
+
+    </section>
+
+    <section class="linha-tempo">
+
+      <h2>Linha do Tempo</h2>
+
+      <div class="timeline-container">
+
+        <div class="timeline-item">
+          <span>1800</span>
+          <p>Movimentos Republicanos</p>
+        </div>
+
+        <div class="timeline-item">
+          <span>1884</span>
+          <p>Abolição da Escravidão no Ceará</p>
+        </div>
+
+        <div class="timeline-item">
+          <span>1932</span>
+          <p>Direito ao Voto Feminino</p>
+        </div>
+
+        <div class="timeline-item">
+          <span>1986</span>
+          <p>Primeira Prefeita de Capital</p>
+        </div>
+
+        <div class="timeline-item">
+          <span>Atualidade</span>
+          <p>Ampliação da Representatividade</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="jardim-section">
+
+      <h2>Flores da Resistência</h2>
+
+      <div
+        class="jardim-display"
+        id="jardim"
+        aria-label="Jardim de mulheres cearenses"
+      ></div>
+
+    </section>
+
+  </main>
+
+  <!-- Modal -->
+  <div class="overlay" id="overlay"></div>
+
+  <div
+    id="modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-nome"
+  >
+
+    <button class="close-btn" id="fecharModalBtn">
+      ✕
+    </button>
+
+    <h2 id="modal-nome"></h2>
+
+    <p class="modal-datas">
+      <strong>Nascimento:</strong>
+      <span id="modal-nasc"></span>
+
+      |
+
+      <strong>Falecimento:</strong>
+      <span id="modal-fale"></span>
+    </p>
+
+    <div class="modal-box">
+      <h3>Trajetória e Vivência</h3>
+      <p id="modal-bio"></p>
+    </div>
+
+    <div class="modal-box destaque">
+      <h3>Legado Político</h3>
+      <p id="modal-feitos"></p>
+    </div>
+
+  </div>
+
+  <script>
+
+    const jardim = document.getElementById('jardim');
+
+    const modal = document.getElementById('modal');
+    const overlay = document.getElementById('overlay');
+
+    const pesquisa = document.getElementById('pesquisa');
+    const filtroCategoria = document.getElementById('filtro-categoria');
+
+
+const mulheres = [
+    
+  {
+    "nome": "Bárbara de Alencar",
+    "nasc": "11/02/1760",
+    "fale": "18/08/1832",
+    "categoria": "politica",
+    "cor": "#b22222",
+    "bio": "Líder política cearense nascida no Crato, Bárbara de Alencar participou ativamente dos movimentos republicanos do Nordeste no início do século XIX. Em uma sociedade dominada por homens e marcada pelo poder monárquico português, ela apoiou financeiramente e politicamente a Revolução Pernambucana de 1817 e posteriormente a Confederação do Equador. Sua atuação foi considerada extremamente ousada para a época, tornando-se símbolo da resistência feminina e da luta por liberdade política no Brasil colonial.",
+    "feitos": "É considerada uma das primeiras presas políticas do Brasil. Foi perseguida, presa e violentamente reprimida por defender ideias republicanas e separatistas contra o império português. Sua trajetória marcou profundamente a história política do Ceará e do Brasil como exemplo de coragem, liderança e participação feminina em movimentos revolucionários."
+  },
+
+  {
+    "nome": "Maria Tomásia Figueira Lima",
+    "nasc": "1826",
+    "fale": "1902",
+    "categoria": "ativismo",
+    "cor": "#4b2c20",
+    "bio": "Maria Tomásia foi uma importante líder abolicionista cearense do século XIX. Atuou em um período em que a escravidão ainda sustentava grande parte da economia brasileira, organizando campanhas públicas, arrecadações e movimentos sociais voltados para a libertação de pessoas escravizadas no Ceará. Seu trabalho envolvia mobilização social, articulação política e incentivo ao movimento abolicionista.",
+    "feitos": "Fundadora da Sociedade Cearense Libertadora, teve papel central na campanha que tornou o Ceará o primeiro estado brasileiro a abolir oficialmente a escravidão, em 1884, antes da Lei Áurea. Sua atuação fortaleceu o movimento abolicionista nacional e contribuiu para ampliar o debate sobre liberdade e direitos humanos."
+  },
+
+  {
+    "nome": "Maria da Penha",
+    "nasc": "01/02/1945",
+    "fale": "Viva",
+    "categoria": "ativismo",
+    "cor": "#ff1493",
+    "bio": "Biofarmacêutica cearense e ativista internacional pelos direitos das mulheres, Maria da Penha transformou sua própria história de violência doméstica em símbolo mundial de resistência e luta por justiça. Após sobreviver a duas tentativas de feminicídio, iniciou uma longa batalha judicial que chamou atenção internacional para a violência contra a mulher no Brasil.",
+    "feitos": "Inspirou a criação da Lei Maria da Penha, considerada uma das legislações mais importantes do mundo no combate à violência doméstica. Sua luta levou o Brasil a ser responsabilizado internacionalmente por negligência em casos de violência contra mulheres e contribuiu para mudanças profundas nas políticas públicas de proteção feminina."
+  },
+
+  {
+    "nome": "Maria Luiza Fontenele",
+    "nasc": "27/11/1942",
+    "fale": "Viva",
+    "categoria": "politica",
+    "cor": "#4b0082",
+    "bio": "Socióloga, professora e militante política, Maria Luiza Fontenele teve forte atuação nos movimentos sociais e na redemocratização do Brasil após o período militar. Sua trajetória política foi marcada pela defesa da participação popular, democracia direta e fortalecimento das políticas sociais.",
+    "feitos": "Foi a primeira mulher eleita prefeita de uma capital brasileira, governando Fortaleza entre 1986 e 1989. Sua gestão ficou marcada por propostas inovadoras de participação popular, reorganização administrativa e valorização de políticas sociais voltadas à população mais vulnerável."
+  },
+
+  {
+    "nome": "Izolda Cela",
+    "nasc": "09/05/1960",
+    "fale": "Viva",
+    "categoria": "educacao",
+    "cor": "#0056b3",
+    "bio": "Educadora, psicóloga e gestora pública cearense, Izolda Cela construiu uma carreira voltada principalmente para políticas educacionais. Sua atuação ganhou destaque nacional por priorizar alfabetização, ensino integral e melhoria da educação pública.",
+    "feitos": "Foi a primeira mulher governadora do Ceará e participou da implementação de políticas educacionais que colocaram o estado entre os melhores índices de ensino público do Brasil. Também teve papel importante na expansão da educação em tempo integral."
+  },
+
+  {
+    "nome": "Cacique Pequena",
+    "nasc": "1945",
+    "fale": "Viva",
+    "categoria": "indigena",
+    "cor": "#228b22",
+    "bio": "Liderança indígena do povo Jenipapo-Kanindé, Cacique Pequena tornou-se uma das principais vozes na defesa dos direitos indígenas no Ceará. Sua atuação envolve preservação cultural, defesa territorial, valorização da ancestralidade e fortalecimento da identidade de seu povo.",
+    "feitos": "Reconhecida como uma das primeiras mulheres cacique do Ceará, tornou-se símbolo da resistência indígena contemporânea. Sua liderança contribuiu para processos de demarcação de terras e fortalecimento das tradições culturais indígenas."
+  },
+
+  {
+    "nome": "Jovita Feitosa",
+    "nasc": "08/03/1848",
+    "fale": "09/10/1867",
+    "categoria": "politica",
+    "cor": "#daa520",
+    "bio": "Cearense que ganhou notoriedade durante a Guerra do Paraguai ao tentar se alistar no exército brasileiro. Sua atitude desafiou diretamente os padrões sociais da época, que proibiam a participação feminina em conflitos militares.",
+    "feitos": "Tornou-se símbolo do patriotismo feminino no século XIX. Sua tentativa de integrar o exército gerou repercussão nacional e expôs as restrições impostas às mulheres na sociedade imperial brasileira."
+  },
+
+  {
+    "nome": "Patrícia Saboya",
+    "nasc": "04/04/1962",
+    "fale": "Viva",
+    "categoria": "politica",
+    "cor": "#8a2be2",
+    "bio": "Política cearense com forte atuação em defesa da infância, juventude e direitos sociais. Sua trajetória parlamentar é marcada pela defesa de políticas públicas voltadas à proteção de populações vulneráveis.",
+    "feitos": "Foi a primeira mulher eleita senadora pelo Ceará e destacou-se em CPIs e projetos ligados à proteção da infância e juventude, fortalecendo políticas públicas de assistência social."
+  },
+
+  {
+    "nome": "Luizianne Lins",
+    "nasc": "18/11/1968",
+    "fale": "Viva",
+    "categoria": "politica",
+    "cor": "#e31a1c",
+    "bio": "Jornalista e política cearense, iniciou sua trajetória nos movimentos estudantis e sociais, defendendo pautas urbanas, culturais e de juventude. Sua atuação sempre esteve ligada à ampliação de direitos sociais.",
+    "feitos": "Criou os Centros Urbanos de Cultura, Arte, Ciência e Esporte (CUCA) em Fortaleza, que se tornaram referência nacional em políticas públicas para juventude, cultura e inclusão social."
+  },
+
+  {
+    "nome": "Jade Romero",
+    "nasc": "19/08/1985",
+    "fale": "Viva",
+    "categoria": "politica",
+    "cor": "#00ced1",
+    "bio": "Vice-governadora do Ceará e gestora pública, Jade Romero atua em políticas de proteção social, direitos humanos e enfrentamento à violência contra mulheres.",
+    "feitos": "Participou da expansão da Casa da Mulher Cearense e de políticas voltadas à interiorização da rede de proteção às mulheres em situação de violência."
+  },
+
+  {
+    "nome": "Augusta Brito",
+    "nasc": "27/05/1976",
+    "fale": "Viva",
+    "categoria": "politica",
+    "cor": "#ff4500",
+    "bio": "Enfermeira e política cearense, Augusta Brito construiu sua carreira voltada à saúde pública, fortalecimento dos municípios e desenvolvimento regional. Sua atuação política está ligada à defesa do acesso à saúde e melhoria da qualidade de vida da população.",
+    "feitos": "Atuou no Senado Federal e em mandatos estaduais defendendo melhorias para a saúde pública, fortalecimento das políticas municipais e investimentos em desenvolvimento regional no Ceará."
+  },
+
+  {
+    "nome": "Zélia Correia Lima",
+    "nasc": "1924",
+    "fale": "2008",
+    "categoria": "educacao",
+    "cor": "#4682b4",
+    "bio": "Médica e política atuante em Fortaleza, Zélia Correia Lima teve papel importante na estruturação de políticas de saúde voltadas para populações de baixa renda e periferias urbanas.",
+    "feitos": "Defendeu a criação e ampliação de postos de saúde em áreas periféricas, contribuindo para ampliar o acesso ao atendimento médico em Fortaleza."
+  },
+
+  {
+    "nome": "Rachel de Queiroz",
+    "nasc": "17/11/1910",
+    "fale": "04/11/2003",
+    "categoria": "literatura",
+    "cor": "#2c3e50",
+    "bio": "Escritora, jornalista e intelectual cearense, Rachel de Queiroz foi uma das maiores referências da literatura brasileira do século XX. Sua obra retrata profundamente a realidade social do Nordeste brasileiro.",
+    "feitos": "Foi a primeira mulher a ingressar na Academia Brasileira de Letras e autora de 'O Quinze', obra considerada um marco da literatura regionalista brasileira."
+  },
+
+  {
+    "nome": "Almerinda Farias Gama",
+    "nasc": "16/05/1899",
+    "fale": "1999",
+    "categoria": "ativismo",
+    "cor": "#c71585",
+    "bio": "Professora, jornalista e ativista política, participou ativamente do movimento sufragista brasileiro na luta pelos direitos civis e políticos das mulheres.",
+    "feitos": "Teve papel importante na conquista do direito ao voto feminino no Brasil e contribuiu para ampliar a participação política das mulheres brasileiras."
+  },
+
+  {
+    "nome": "Onélia Santana",
+    "nasc": "21/02/1971",
+    "fale": "Viva",
+    "categoria": "educacao",
+    "cor": "#ff6347",
+    "bio": "Psicopedagoga e gestora pública, dedica sua trajetória a políticas de proteção à infância e fortalecimento de famílias em situação de vulnerabilidade social.",
+    "feitos": "Criou o programa Mais Infância Ceará, referência nacional em políticas públicas voltadas ao desenvolvimento infantil e proteção social."
+  },
+
+  {
+    "nome": "Fanca (Francisca Rodrigues)",
+    "nasc": "1954",
+    "fale": "Viva",
+    "categoria": "ativismo",
+    "cor": "#2f4f4f",
+    "bio": "Militante dos movimentos populares urbanos em Fortaleza, atuou na organização comunitária e na defesa de direitos sociais em bairros periféricos.",
+    "feitos": "Participou de lutas históricas por moradia, saneamento básico e fortalecimento de associações comunitárias em áreas periféricas do Ceará."
+  },
+
+  {
+    "nome": "Benedita de Oliveira",
+    "nasc": "1930",
+    "fale": "2015",
+    "categoria": "ativismo",
+    "cor": "#8b4513",
+    "bio": "Liderança camponesa cearense, Benedita de Oliveira atuou na defesa dos direitos dos trabalhadores rurais e na luta por reforma agrária no interior do estado.",
+    "feitos": "Foi referência em movimentos rurais e contribuiu para a organização de trabalhadores agrícolas na luta por terra, dignidade e melhores condições de vida."
+  },
+
+  {
+    "nome": "Emília Pessoa Veras",
+    "nasc": "1910",
+    "fale": "1990",
+    "categoria": "educacao",
+    "cor": "#cd853f",
+    "bio": "Advogada cearense pioneira na defesa da participação feminina em espaços jurídicos e institucionais. Sua trajetória ajudou a abrir caminhos para mulheres no sistema judiciário.",
+    "feitos": "Contribuiu para ampliar a presença de mulheres no serviço público e no sistema jurídico do Ceará, incentivando maior participação feminina nesses espaços."
+  },
+
+  {
+    "nome": "Francisca Clotilde",
+    "nasc": "1862",
+    "fale": "1935",
+    "categoria": "literatura",
+    "cor": "#9932cc",
+    "bio": "Professora, escritora e educadora cearense, destacou-se como defensora da educação feminina e da formação intelectual das mulheres em um período de forte desigualdade social.",
+    "feitos": "Foi uma das pioneiras da literatura feminina no Ceará e incentivou o acesso das mulheres à educação formal e à produção intelectual."
+  },
+
+  {
+    "nome": "Adísia Sá",
+    "nasc": "1929",
+    "fale": "2024",
+    "categoria": "literatura",
+    "cor": "#708090",
+    "bio": "Jornalista, professora universitária e intelectual cearense, Adísia Sá teve longa trajetória na comunicação e na formação de novos profissionais da imprensa.",
+    "feitos": "Tornou-se referência no jornalismo brasileiro e contribuiu para ampliar a presença feminina na imprensa e na educação superior."
+  }
+]
+
+
+    renderizarFlores(mulheres);
+
+    function renderizarFlores(lista) {
+
+      jardim.innerHTML = '';
+
+      lista.forEach(m => {
+
+        const botao = document.createElement('button');
+
+        botao.className = 'flor-box';
+
+        botao.setAttribute('aria-label', `Abrir informações sobre ${m.nome}`);
+
+        const flor = document.createElement('div');
+
+        flor.className = 'flor';
+
+        flor.style.backgroundColor = m.cor;
+
+        for (let i = 0; i < 6; i++) {
+
+          const petala = document.createElement('div');
+
+          petala.className = 'petala';
+
+          petala.style.transform = `rotate(${i * 60}deg)`;
+
+          flor.appendChild(petala);
+        }
+
+        const caule = document.createElement('div');
+
+        caule.className = 'caule';
+
+        const nome = document.createElement('div');
+
+        nome.className = 'nome-flor';
+
+        nome.innerText = m.nome;
+
+        botao.addEventListener('click', () => abrirModal(m));
+
+        botao.appendChild(flor);
+        botao.appendChild(caule);
+        botao.appendChild(nome);
+
+        jardim.appendChild(botao);
+      });
+    }
+
+    function abrirModal(mulher) {
+
+      document.getElementById('modal-nome').innerText = mulher.nome;
+
+      document.getElementById('modal-nasc').innerText = mulher.nasc;
+
+      document.getElementById('modal-fale').innerText = mulher.fale;
+
+      document.getElementById('modal-bio').innerText = mulher.bio;
+
+      document.getElementById('modal-feitos').innerText = mulher.feitos;
+
+      modal.style.display = 'block';
+
+      overlay.style.display = 'block';
+    }
+
+    function fecharModal() {
+
+      modal.style.display = 'none';
+
+      overlay.style.display = 'none';
+    }
+
+    overlay.addEventListener('click', fecharModal);
+
+    document
+      .getElementById('fecharModalBtn')
+      .addEventListener('click', fecharModal);
+
+    document.addEventListener('keydown', (e) => {
+
+      if (e.key === 'Escape') {
+        fecharModal();
+      }
+    });
+
+    pesquisa.addEventListener('input', filtrar);
+
+    filtroCategoria.addEventListener('change', filtrar);
+
+    function filtrar() {
+
+      const texto = pesquisa.value.toLowerCase();
+
+      const categoria = filtroCategoria.value;
+
+      const filtradas = mulheres.filter(m => {
+
+        const nomeMatch =
+          m.nome.toLowerCase().includes(texto);
+
+        const categoriaMatch =
+          categoria === 'todas' ||
+          m.categoria === categoria;
+
+        return nomeMatch && categoriaMatch;
+      });
+
+      renderizarFlores(filtradas);
+    }
+
+  </script>
+
+</body>
+</html>
