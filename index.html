@@ -509,10 +509,11 @@
       <strong>Nascimento:</strong>
       <span id="modal-nasc"></span>
 
-      |
-
-      <strong>Falecimento:</strong>
+      |<strong>Falecimento:</strong>
       <span id="modal-fale"></span>
+
+      <strong>Status:</strong>
+      <span id="modal-status"></span>
     </p>
 
     <div class="modal-box">
@@ -563,7 +564,7 @@ const mulheres = [
   {
     "nome": "Maria da Penha",
     "nasc": "01/02/1945",
-    "fale": "Viva",
+    "status": "Viva",
     "categoria": "ativismo",
     "cor": "#ff1493",
     "bio": "Biofarmacêutica cearense e ativista internacional pelos direitos das mulheres, Maria da Penha transformou sua própria história de violência doméstica em símbolo mundial de resistência e luta por justiça. Após sobreviver a duas tentativas de feminicídio, iniciou uma longa batalha judicial que chamou atenção internacional para a violência contra a mulher no Brasil.",
@@ -573,7 +574,7 @@ const mulheres = [
   {
     "nome": "Maria Luiza Fontenele",
     "nasc": "27/11/1942",
-    "fale": "Viva",
+    "status": "Viva",
     "categoria": "politica",
     "cor": "#4b0082",
     "bio": "Socióloga, professora e militante política, Maria Luiza Fontenele teve forte atuação nos movimentos sociais e na redemocratização do Brasil após o período militar. Sua trajetória política foi marcada pela defesa da participação popular, democracia direta e fortalecimento das políticas sociais.",
@@ -583,7 +584,7 @@ const mulheres = [
   {
     "nome": "Izolda Cela",
     "nasc": "09/05/1960",
-    "fale": "Viva",
+    "status": "Viva",
     "categoria": "educacao",
     "cor": "#0056b3",
     "bio": "Educadora, psicóloga e gestora pública cearense, Izolda Cela construiu uma carreira voltada principalmente para políticas educacionais. Sua atuação ganhou destaque nacional por priorizar alfabetização, ensino integral e melhoria da educação pública.",
@@ -593,7 +594,7 @@ const mulheres = [
   {
     "nome": "Cacique Pequena",
     "nasc": "1945",
-    "fale": "Viva",
+    "status": "Viva",
     "categoria": "indigena",
     "cor": "#228b22",
     "bio": "Liderança indígena do povo Jenipapo-Kanindé, Cacique Pequena tornou-se uma das principais vozes na defesa dos direitos indígenas no Ceará. Sua atuação envolve preservação cultural, defesa territorial, valorização da ancestralidade e fortalecimento da identidade de seu povo.",
@@ -613,7 +614,7 @@ const mulheres = [
   {
     "nome": "Patrícia Saboya",
     "nasc": "04/04/1962",
-    "fale": "Viva",
+    "status": "Viva",
     "categoria": "politica",
     "cor": "#8a2be2",
     "bio": "Política cearense com forte atuação em defesa da infância, juventude e direitos sociais. Sua trajetória parlamentar é marcada pela defesa de políticas públicas voltadas à proteção de populações vulneráveis.",
@@ -623,7 +624,7 @@ const mulheres = [
   {
     "nome": "Luizianne Lins",
     "nasc": "18/11/1968",
-    "fale": "Viva",
+    "status": "Viva",
     "categoria": "politica",
     "cor": "#e31a1c",
     "bio": "Jornalista e política cearense, iniciou sua trajetória nos movimentos estudantis e sociais, defendendo pautas urbanas, culturais e de juventude. Sua atuação sempre esteve ligada à ampliação de direitos sociais.",
@@ -633,7 +634,7 @@ const mulheres = [
   {
     "nome": "Jade Romero",
     "nasc": "19/08/1985",
-    "fale": "Viva",
+    "status": "Viva",
     "categoria": "politica",
     "cor": "#00ced1",
     "bio": "Vice-governadora do Ceará e gestora pública, Jade Romero atua em políticas de proteção social, direitos humanos e enfrentamento à violência contra mulheres.",
@@ -643,7 +644,7 @@ const mulheres = [
   {
     "nome": "Augusta Brito",
     "nasc": "27/05/1976",
-    "fale": "Viva",
+    "status": "Viva",
     "categoria": "politica",
     "cor": "#ff4500",
     "bio": "Enfermeira e política cearense, Augusta Brito construiu sua carreira voltada à saúde pública, fortalecimento dos municípios e desenvolvimento regional. Sua atuação política está ligada à defesa do acesso à saúde e melhoria da qualidade de vida da população.",
@@ -683,7 +684,7 @@ const mulheres = [
   {
     "nome": "Onélia Santana",
     "nasc": "21/02/1971",
-    "fale": "Viva",
+    "status": "Viva",
     "categoria": "educacao",
     "cor": "#ff6347",
     "bio": "Psicopedagoga e gestora pública, dedica sua trajetória a políticas de proteção à infância e fortalecimento de famílias em situação de vulnerabilidade social.",
@@ -701,7 +702,7 @@ const mulheres = [
   {
   "nome": "Kessya Hanna Monteiro de Alencar",
   "nasc": "21/06/1995",
-  "fale": "Viva",
+  "status": "Viva",
   "categoria": "politica",
   "cor": "#ff69b4",
   "bio": "Vereadora do município de Caucaia, Kessya Hanna Monteiro de Alencar representa uma nova geração de mulheres na política cearense. Sua atuação é voltada ao fortalecimento das políticas públicas municipais, à participação popular e ao desenvolvimento social da população caucaiense.",
@@ -719,7 +720,7 @@ const mulheres = [
   {
   "nome": "Ariana Aquino",
   "nasc": "Viva",
-  "fale": "Viva",
+  "status": "Viva",
   "categoria": "politica",
   "cor": "#20b2aa",
   "bio": "Política cearense e prefeita de Paraipaba, Ariana Aquino tem sua trajetória marcada pela atuação na administração pública municipal, buscando promover melhorias para a população por meio de investimentos em serviços essenciais e no desenvolvimento do município.",
@@ -728,7 +729,7 @@ const mulheres = [
   {
   "nome": "Maria Emília Pessoa de Lima Carneiro",
   "nasc": "1977",
-  "fale": "Viva",
+  "status": "Viva",
   "categoria": "politica",
   "cor": "#800080",
   "bio": "Advogada, professora e política cearense, Maria Emília Pessoa de Lima Carneiro iniciou sua trajetória pública em Caucaia, onde exerceu mandato como vereadora antes de se tornar deputada estadual. Sua atuação é voltada ao fortalecimento das políticas públicas, à defesa dos direitos das mulheres, da educação e da assistência social, destacando-se também pelo incentivo à participação feminina na política.",
@@ -737,7 +738,7 @@ const mulheres = [
   {
   "nome": "Patrícia Aguiar",
   "nasc": "1963",
-  "fale": "Viva",
+  "status": "Viva",
   "categoria": "politica",
   "cor": "#ff8c00",
   "bio": "Política cearense com longa trajetória na administração pública, Patrícia Aguiar destacou-se como prefeita de Tauá e por sua atuação em defesa do desenvolvimento regional, da educação, da saúde e da melhoria da qualidade de vida da população do interior do Ceará.",
@@ -745,7 +746,7 @@ const mulheres = [
 },
   {
     "nome": "Adísia Sá",
-    "nasc": "1929",
+    "nasc": "07/11/1929",
     "fale": "2024",
     "categoria": "literatura",
     "cor": "#708090",
